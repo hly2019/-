@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+div.img {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 180px;
+}
+body{
+    background: #f0ffab;
+}
+
+div.img:hover {
+    border: 1px solid #777;
+}
+
+div.img img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+a{text-decoration:none}
+img{
+    {#border-style:groove;#}
+    border-radius: 20px;
+
+}
+</style>
+</head>
+
+
+<body>
+    <meta charset="UTF-8">
+    <title>演员信息</title>
+
+
+        <a style="font-style: italic;color: black " href="http://localhost:8000/movie/all_actor/1" style="text-align: right">
+
+                回到演员主页&nbsp;&nbsp;&nbsp;
+
+
+        </a>
+        <a  style="font-style: italic;color: black " href="http://localhost:8000/movie/main_page/1" style="text-align: right">
+
+                回到电影主页&nbsp;&nbsp;&nbsp;
+
+
+        </a>
+            <a  style="font-style: italic;color: black " href="http://localhost:8000/movie/search_page/" style="text-align: right">
+
+                回搜索页
+
+
+        </a>
+        <h2>
+        {{ target_actor.name}}
+    </h2>
+
+
+    <h3>
+        <img src={{ target_actor.pic }}>
+    </h3>
+
+    <br>
+    <br>
+    <p>
+        {{ target_actor.comment }}
+    </p>
+    <h4 >
+        合作演员:
+    </h4>
+    <p>
+        {% for it_name,it_lis in ans.items %}
+            <div class="responsive">
+              <div class="img">
+            <a href="http://localhost:8000/movie/actorpage/{{ it_name }}">
+            <img src= {{ it_lis.1 }}>
+            <p style="font-style: italic;color: black ">{{ it_name }}</p>
+            <br>
+            <p style="font-style: italic;color: black ">合作次数: {{ it_lis.0 }}</p>
+
+
+
+            </a>
+              </div>
+            </div>
+        {% endfor %}
+    </p>
+    <br><br clear="left">
+<h4>
+    参与电影:
+</h4>
+<p>
+{% for it_name,it_pic in canyu_mov.items %}
+    <div class="responsive">
+  <div class="img">
+    <a href="http://localhost:8000/movie/moviepage/{{ it_name }}">
+    <img src={{ it_pic }}><br>
+    <p style="font-style: italic;color: black "> {{ it_name }}</p>
+    </a>
+  </div>
+    </div>
+{% endfor %}
+</p>
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<style>
+div.img {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 180px;
+}
+body{
+    background: #f0ffab;
+}
+div.img:hover {
+    border: 1px solid #777;
+}
+
+div.img img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+a{text-decoration:none}
+img{
+    {#border-style:groove;#}
+    border-radius: 20px;
+
+}
+</style>
+</head>
+
+
+
+
+<body>
+
+    <meta charset="UTF-8">
+    <title>电影信息</title>
+
+
+        <a style="font-style: italic;color: black " href="http://localhost:8000/movie/main_page/1">
+            回电影主页&nbsp;&nbsp;&nbsp;
+        </a>
+        <a style="font-style: italic;color: black " href="http://localhost:8000/movie/all_actor/1">
+            回演员主页&nbsp;&nbsp;&nbsp;
+        </a>
+            <a style="font-style: italic;color: black " href="http://localhost:8000/movie/search_page/">
+            回搜索页
+        </a>
+    <h2>
+        {{ target_movie.name }}
+    </h2>
+
+
+    <h3>
+        <img src={{ target_movie.pic }}>
+    </h3>
+    <br>
+
+    <h4>
+        {{ target_movie.info }}
+    </h4>
+    <br>
+    <h5>
+        评论:
+        <br><br>
+    </h5>
+
+    <p>
+
+        {% for it in target_movie.comment %}
+            {{ it }}
+            <br>
+            <br>
+        {% endfor %}
+    </p>
+    <br>
+    <p>
+        主演:
+    </p>
+    <br>
+    <p>
+        {% for name,pic in main_actors.items %}
+<div class="responsive">
+  <div class="img">
+            <a href="http://localhost:8000/movie/actorpage/{{ name }}">
+                <img src={{ pic.1 }}>
+                <p style="font-style: italic;color: black "> {{ name }}</p>
+            </a>
+  </div></div>
+
+        {% endfor %}
+    </p>
+
+
+</body>
+</html>

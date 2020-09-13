@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+div.img {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 180px;
+}
+
+div.img:hover {
+    border: 1px solid #777;
+}
+
+div.img img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+    <meta charset="UTF-8">
+    <title>
+        全部电影
+    </title>
+    <h1 style="text-align: center">
+        全部电影
+    </h1>
+    <form action="search.html">
+搜索:<br>
+<input type="text" name="">
+<br>
+        <input type="submit" value="Submit">
+    </form>
+
+        <br>
+    <div class="responsive">
+    <div class="img">
+        {% for it in movies %}
+            <p>
+            <a target="_blank" href="http://localhost:8000/movie/moviepage/{{ it.0 }}">
+                <img src={{ it.1.0}} width="300" height="500" >
+                {{ it.0 }}
+</a>
+            </p>
+
+        {% endfor %}
+
+
+    <p>
+        <a href="http://localhost:8000/movie/main_page/{{ last }}">
+        上一页
+    </a>
+    <a href="http://localhost:8000/movie/main_page/{{ next }}">
+        下一页
+    </a>
+
+</p>
+    </div>
+    </div>
+
+
+
+
+</body>
+</html>

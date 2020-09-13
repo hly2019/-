@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <style>
+div.img {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 180px;
+}
+
+div.img:hover {
+    border: 1px solid #777;
+}
+
+div.img img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+</style>
+</head>
+
+
+
+<body>
+    <meta charset="UTF-8">
+    <title>
+        全部演员
+    </title>
+    <h1 style="text-align: center">
+        全部演员
+    </h1>
+    <form action="search.html">
+        {% csrf_token %}
+搜索:<br>
+<input type="text" name="">
+<br>
+        <input type="submit" value="Submit">
+        <br>
+        <a href="http://localhost:8000/movie/search_page/">
+            搜索页
+        </a>
+        <br>
+    </form>
+        <br>
+        <div class="responsive">
+    <div class="img">
+        {% for it in actors_ %}
+            <p>
+            <a href="http://localhost:8000/movie/actorpage/{{ it.0 }}">
+                <img src={{ it.1 }} width="300" height="500">
+                {{ it.0 }}
+                <br>
+                <br>
+            </a>
+
+
+            </p>
+
+        {% endfor %}
+
+<p>
+    <a href="http://localhost:8000/movie/all_actors/{{ last }}">
+        上一页
+    </a>
+    <a href="http://localhost:8000/movie/all_actors/{{ next }}">
+        下一页
+    </a>
+
+</p>
+    </div>
+        </div>
+    </a>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+div.img {
+    border: 1px solid #ccc;
+}
+
+div.img:hover {
+    border: 1px solid #777;
+}
+
+div.img img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.responsive {
+    padding: 0 6px;
+    float: left;
+    width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px){
+    .responsive {
+        width: 49.99999%;
+        margin: 6px 0;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .responsive {
+        width: 90%;
+    }
+}
+img{
+    {#border-style:groove;#}
+    border-radius: 20px;
+
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+body{
+    background: #f0ffab;
+}
+a{text-decoration:none}
+</style>
+</head>
+
+
+
+
+<body>
+    <meta charset="UTF-8">
+    <title>搜索结果  </title>
+
+   <a style="font-style: italic;color: darkblue ;text-align: center"href="http://localhost:8000/movie/main_page/1">回电影主页</a>
+<a style="font-style: italic;color: darkblue ;text-align: right"href="http://localhost:8000/movie/all_actor/1">回演员主页</a>
+<a style="font-style: italic;color: darkblue ;text-align: right"href="http://localhost:8000/movie/search_page/">回搜索页</a>
+    <h2>
+    搜索结果 共{{ size }}条
+</h2>
+    <h3>
+        花费时间:{{ search_time }}秒
+    </h3>
+
+
+    <div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+
+
+   <form name="input" method="post" accept-charset="UTF-8">
+        {% csrf_token %}
+        <input type="text" name="page">
+        <input type="submit" value="Submit">
+    </form>
+<br>
+{% for it in page_obj %}
+    <div class="responsive">
+              <div class="img">
+    <a href="http://localhost:8000/movie/actorpage/{{ it.0 }}" >
+        <img src={{ it.1 }}>
+        <p style="font-style: italic;color: black ">{{ it.0 }}</p>
+    </a>
+              </div>
+    </div>
+
+{% endfor %}
+
+
+
+{#{% for contact in page_obj %}#}
+    {# Each "contact" is a Contact model object. #}
+{#    {{ contact.full_name|upper }}<br>#}
+{#{% endfor %}#}
+
+
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+#cin{
+
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: content-box;
+    width: 700px;
+    height: 20px;
+    position: absolute;
+    top: 270px;
+    left: 300px;
+    font-size: 15px;
+    font-style: italic;
+}
+body{
+    background: #f0ffab;
+}
+#in{
+    position: absolute;
+    left: 610px;
+    top: 370px;
+    width: 200px;
+    height: 30px;
+    font-size: 15px;
+    font-style: italic;
+}
+#sel{
+    position: absolute;
+    left: 170px;
+    top: 282px;
+    width: 70px;
+    height: 35px;
+    font-size: 15px;
+    font-style: italic;
+
+}
+#titl{
+    top: 130px;
+    left: 618px;
+    position: absolute;
+    size: 100px;
+}
+a{text-decoration:none}
+</style>
+</head>
+
+
+<body>
+    <meta charset="UTF-8">
+    <title>搜索页</title>
+    <h1 id="titl" style="text-align: center">搜索</h1>
+    <form name="input" method="post" accept-charset="UTF-8" >
+        {% csrf_token %}
+        <select id="sel" name="selects">
+    <option name="actor">演员
+    </option>
+    <option name="movie">电影
+    </option>
+    <option name="comment">评论</option>
+        </select>
+
+        <input id="cin" type="text" name="movies">
+       <div id="in"> <input style="width: 90px;height: 50px" type="submit" value="Submit"></div>
+    </form>
+        <a style="font-style: italic;color: black "href="http://localhost:8000/movie/main_page/1">
+            回电影主页
+        </a>
+        <br>
+        <a style="font-style: italic;color: black "href="http://localhost:8000/movie/all_actor/1">
+            回演员主页
+        </a>
+
+
+</body>
+</html>
